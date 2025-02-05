@@ -1,0 +1,15 @@
+version: "3"
+services:
+  smtp-server:
+    image: mailhog/mailhog
+    container_name: smtp-server
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    environment:
+      MH_STORAGE: maildir
+      MH_MAILDIR_PATH: /tmp
+    volumes:
+      - mail-volumes:/tmp
+volumes:
+  mail-volumes:
