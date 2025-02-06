@@ -11,5 +11,14 @@ services:
       MH_MAILDIR_PATH: /tmp
     volumes:
       - mail-volumes:/tmp
+  pop-imap-server:
+    build: ./dovecot
+    container_name: pop-imap-server
+    ports:
+      - "143:31143"
+      - "110:31110"
+    volumes:
+      - mail-volumes:/srv/vmail
+      - ./dovecot:/etc/dovecot/conf.d
 volumes:
   mail-volumes:
